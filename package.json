@@ -1,0 +1,27 @@
+{
+  "name": "api-users-sky",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://innersource.accenture.com/scm/sau/api-users-sky.git",
+  "author": "Mateus Nascimento <mateus.l.nascimento@accenture.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon --exec babel-node src/index.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "eslint": "^6.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.9",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
