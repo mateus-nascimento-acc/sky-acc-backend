@@ -33,9 +33,9 @@ email, senha e uma lista de objetos telefone. Seguem os modelos:
 }
 ```
 
-- [x] Usar status codes de acordo
-- [x] Em caso de sucesso irá retornar um usuário mais os campos:
-- [x] id: id do usuário (pode ser o próprio gerado pelo banco, porém seria interessante
+[x] Usar status codes de acordo
+[x] Em caso de sucesso irá retornar um usuário mais os campos:
+[x] id: id do usuário (pode ser o próprio gerado pelo banco, porém seria interessante
 se fosse um GUID)
 - [x] data_criacao: data da criação do usuário
 - [x] data_atualizacao: data da última atualização do usuário
