@@ -1,11 +1,10 @@
-'use strict'
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-
 import authConfig from '../config/auth';
-
 import User from '../models/users';
+import ValidationContract from '../validator/fluent.validator';
+
 const router = express.Router();
 
 function generateToken(params = {}) {
@@ -14,8 +13,18 @@ function generateToken(params = {}) {
     })
 }
 
-router.post('/register', async (req, res, next) => {
-    const { email } = req.body
+router.post('/register', async (req, res) => {
+
+    const contract = new ValidationContract();
+    contract.isRequired(req.body.name, 'É obrigatório informar um nome');
+    contract.isRequired(req.body.email, 'É obrigatório informar um e-mail');
+    contract.isRequired(req.body.password, 'É obrigatório informar uma senha');
+    contract.isEmail(req.body.email, 'É necessário informar um endereço de e-mail válido');
+
+    if (!contract.isValid()) {
+        return res.status(400).send(contract.errors()).end();
+    }
+    const { email } = req.body;
     try {
         if (await User.findOne({ email }))
             return res.status(400).send({ error: 'E-mail já existente' });
@@ -36,8 +45,7 @@ router.post('/register', async (req, res, next) => {
 router.post('/authenticate', async (req, res, next) => {
 
     const { email, password } = req.body;
-    
-    
+
     const user = await User.findOne({ email }).select('+password');
 
     if (!user)
@@ -47,17 +55,16 @@ router.post('/authenticate', async (req, res, next) => {
         return res.status(400).send('Usuário e/ou senha inválidos')
 
     user.password = undefined;
-    
 
     const token = jwt.sign({ id: user.id }, authConfig.secret, {
-        expiresIn: 180,
+        expiresIn: 1800,
     });
 
     res.send({
-        user: user.email,
+        user,
         token: generateToken({ id: user.id })
-    })
+    });
+    next();
+});
 
-})
-
-module.exports = app => app.use('/auth', router)
+module.exports = app => app.use('/auth', router);

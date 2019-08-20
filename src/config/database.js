@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-
 // configurando e testando connection string com mongoDB
 const mongoDB = 'mongodb+srv://dbUser:testeSky@1@cluster0-mgipb.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, {useNewUrlParser: true});
