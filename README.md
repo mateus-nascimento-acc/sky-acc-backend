@@ -47,47 +47,47 @@ existente".
 - O token deverá ser persistido junto com o usuário
 
 ## Sign in
-• Este endpoint irá receber um objeto com e-mail e senha.
-• Caso o e-mail exista e a senha seja a mesma que a senha persistida, retornar
+ - Este endpoint irá receber um objeto com e-mail e senha.
+ - Caso o e-mail exista e a senha seja a mesma que a senha persistida, retornar
 igual ao endpoint de sign_up.
-• Caso o e-mail não exista, retornar erro com status apropriado mais a mensagem
+ - Caso o e-mail não exista, retornar erro com status apropriado mais a mensagem
 "Usuário e/ou senha inválidos"
-• Caso o e-mail exista mas a senha não bata, retornar o status apropriado 401
+ - Caso o e-mail exista mas a senha não bata, retornar o status apropriado 401
 mais a mensagem "Usuário e/ou senha inválidos"
 
-##Buscar usuário
+## Buscar usuário
 
-• Chamadas para este endpoint devem conter um header na requisição de
+ - Chamadas para este endpoint devem conter um header na requisição de
 Authentication com o valor "Bearer {token}" onde {token} é o valor do token
 passado na criação ou sign in de um usuário.
-• Caso o token não exista, retornar erro com status apropriado com a mensagem
+ - Caso o token não exista, retornar erro com status apropriado com a mensagem
 "Não autorizado".
-• Caso o token exista, buscar o usuário pelo user_id passado no path e comparar
+ - Caso o token exista, buscar o usuário pelo user_id passado no path e comparar
 se o token no modelo é igual ao token passado no header.
-• Caso não seja o mesmo token, retornar erro com status apropriado e mensagem
+ - Caso não seja o mesmo token, retornar erro com status apropriado e mensagem
 "Não autorizado"
-• Caso seja o mesmo token, verificar se o último login foi a MENOS que 30
+ - Caso seja o mesmo token, verificar se o último login foi a MENOS que 30
 minutos atrás.
-• Caso não seja a MENOS que 30 minutos atrás, retornar erro com status
+ - Caso não seja a MENOS que 30 minutos atrás, retornar erro com status
 apropriado com mensagem "Sessão inválida".
-• Caso tudo esteja ok, retornar o usuário.
+ - Caso tudo esteja ok, retornar o usuário.
 Requisitos
-• Persistência de dados
-• Gestão de dependências via gerenciador de pacotes (npm)
-• Utilização de Eslint
-• API: Express, Hapi ou similares.
-• Utilizar banco nosql
+ - Persistência de dados
+ - Gestão de dependências via gerenciador de pacotes (npm)
+ - Utilização de Eslint
+ - API: Express, Hapi ou similares.
+ - Utilizar banco nosql
 
 ## Requisitos desejáveis
 
-• JWT como token
-• Testes unitários
-• Criptografia não reversível (hash) na senha e no token
-• Mongo
+ - JWT como token
+ - Testes unitários
+ - Criptografia não reversível (hash) na senha e no token
+ - Mongo
 
 ## Submissão
 
-• O desafio deve ser entregue pelo GitHub. 
-• A aplicação deve estar hospedada (Heroku, Google Cloud, AWS, ou serviço
+ - O desafio deve ser entregue pelo GitHub. 
+ - A aplicação deve estar hospedada (Heroku, Google Cloud, AWS, ou serviço
 similar)
-• As URLs deve ser enviada por email.
+ - As URLs deve ser enviada por email.
