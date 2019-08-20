@@ -9,8 +9,11 @@ O servidor deverá retornar JSON para os casos de endpoint não encontrado tamb�
 O aplicativo deverá persistir os dados (ver detalhes em requisitos).
 Todas as respostas de erro devem retornar o objeto:
 
-> {
-> "mensagem": "mensagem de erro"
-> }
+```
+{
 
+"mensagem": "mensagem de erro"
+
+}
+```
 ## Sign-up
